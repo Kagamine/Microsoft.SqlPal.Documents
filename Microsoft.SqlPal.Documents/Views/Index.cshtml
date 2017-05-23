@@ -1,0 +1,76 @@
+﻿@model Microsoft.SqlPal.Documents.Models.Page
+@{ 
+    var isHome = Model.Path.ToString().TrimEnd('/') == "" || Model.Path.ToString().Trim('/') == "index.md";
+}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="description" content="website description" />
+    <meta name="keywords" content="website keywords, website keywords" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="~/style/style.css" />
+    <link href="~/style/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <!-- class="logo_colour", allows you to change the colour of the text -->
+                    <h1><a href="index.html">SQL<span class="logo_colour">PAL</span></a></h1>
+                    <h2>SQL Process Abstraction Layer. @Model.Path.ToString()</h2>
+                </div>
+            </div>
+            <div id="menubar">
+                <ul id="menu">
+                    <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                    @foreach (var x in Model.Nav)
+                    {
+                        @if (Model.Path.ToString() == x.Value || Model.Path.ToString().TrimEnd('/') == x.Value.TrimEnd('/'))
+                        {
+                            <li class="selected"><a href="@x.Value">@x.Key</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@x.Value">@x.Key</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div id="site_content">
+            @if (!isHome)
+            {
+                <div id="sidebar_container">
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item">
+                            <div class="nav">
+                                <div class="nav-list">
+                                    @(new Microsoft.AspNetCore.Html.HtmlString(Model.Toc))
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                </div>
+            }
+            <div id="content" class="@(isHome ? "full-width" : "")">
+                @Html.Marked(Model.Content)
+            </div>
+        </div>
+        <div id="footer">
+            <p>Copyright &copy; @DateTime.Now.Year Microsoft</p>
+        </div>
+        <p>&nbsp;</p>
+    </div>
+    <script src="~/style/jquery-3.1.1.min.js"></script>
+    <script>
+        var endpoint = '@Model.Endpoint';
+    </script>
+    <script src="~/style/highlight.js"></script>
+    <script src="~/style/site.js"></script>
+</body>
+</html>
