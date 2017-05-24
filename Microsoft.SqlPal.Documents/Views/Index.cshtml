@@ -1,76 +1,93 @@
 ﻿@model Microsoft.SqlPal.Documents.Models.Page
-@{ 
+@{
     var isHome = Model.Path.ToString().TrimEnd('/') == "" || Model.Path.ToString().Trim('/') == "index.md";
 }
-<!DOCTYPE HTML>
-<html>
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="description" content="website description" />
-    <meta name="keywords" content="website keywords, website keywords" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="~/style/style.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+    <link href="~/style/doc.css" rel="stylesheet" />
     <link href="~/style/font-awesome.min.css" rel="stylesheet" />
+    <style>
+        body {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+        }
+    </style>
 </head>
-
 <body>
-    <div id="main">
-        <div id="header">
-            <div id="logo">
-                <div id="logo_text">
-                    <!-- class="logo_colour", allows you to change the colour of the text -->
-                    <h1><a href="index.html">SQL<span class="logo_colour">PAL</span></a></h1>
-                    <h2>SQL Process Abstraction Layer. @Model.Path.ToString()</h2>
-                </div>
-            </div>
-            <div id="menubar">
-                <ul id="menu">
-                    <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                    @foreach (var x in Model.Nav)
-                    {
-                        @if (Model.Path.ToString() == x.Value || Model.Path.ToString().TrimEnd('/') == x.Value.TrimEnd('/'))
-                        {
-                            <li class="selected"><a href="@x.Value">@x.Key</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="@x.Value">@x.Key</a></li>
-                        }
-                    }
-                </ul>
-            </div>
-        </div>
-        <div id="site_content">
-            @if (!isHome)
-            {
-                <div id="sidebar_container">
-                    <div class="sidebar">
-                        <div class="sidebar_top"></div>
-                        <div class="sidebar_item">
-                            <div class="nav">
-                                <div class="nav-list">
-                                    @(new Microsoft.AspNetCore.Html.HtmlString(Model.Toc))
-                                </div>
+    <div class="bw">
+        <div class="di">
+            <div class="em brh">
+                <nav class="bro">
+                    <div class="collapse bql" id="nav-toggleable-md">
+                        <form class="brm">
+                            <input class="form-control" type="text" placeholder="Search...">
+                            <button type="submit" class="po">
+                                <i class="fa fa-search" style="margin-right: 5px;"></i>
+                            </button>
+                        </form>
+                        <div class="doc-nav">
+                            <div class="doc-nav-list">
+                                @(new Microsoft.AspNetCore.Html.HtmlString(Model.Toc))
                             </div>
                         </div>
-                        <div class="sidebar_base"></div>
+                        <hr class="bsj afx">
                     </div>
-                </div>
-            }
-            <div id="content" class="@(isHome ? "full-width" : "")">
+                </nav>
+            </div>
+            <div class="es bsk">
                 @Html.Marked(Model.Content)
             </div>
         </div>
-        <div id="footer">
-            <p>Copyright &copy; @DateTime.Now.Year Microsoft</p>
-        </div>
-        <p>&nbsp;</p>
     </div>
+
+    <div class="header">
+        <div class="bw">
+            <span style="margin-right: 20px;">SQLPAL</span>
+            @foreach (var x in Model.Nav)
+            {
+                <a href="@x.Value" class="nav-item">@x.Key</a>
+            }
+        </div>
+    </div>
+
+    <div id="docsModal" class="cb fade" tabindex="-1" role="dialog" aria-labelledby="bsq">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="uf">
+                    <h4 class="modal-title" id="myModalLabel">Example modal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>You're looking at an example modal in the dashboard theme.</p>
+                </div>
+                <div class="ug">
+                    <button type="button" class="ce pb" data-dismiss="modal">Cool, got it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="~/style/jquery-3.1.1.min.js"></script>
+    <script src="~/style/lib.js"></script>
     <script>
         var endpoint = '@Model.Endpoint';
     </script>
     <script src="~/style/highlight.js"></script>
     <script src="~/style/site.js"></script>
+    <script>
+        // execute/clear BS loaders for docs
+        $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
+    </script>
 </body>
 </html>

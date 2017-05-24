@@ -1,4 +1,4 @@
-﻿var anchors = $('.nav-list a');
+﻿var anchors = $('.doc-nav-list a');
 for (var i = 0; i < anchors.length; i++) {
     var nxt = $(anchors[i]).next();
     if (nxt.length > 0 && nxt[0].tagName.toUpperCase() == 'UL') {
@@ -74,5 +74,5 @@ $(document).click(function (e) {
     }
 });
 
-$('.nav-list').scrollTop(active.offset().top + $('.nav-list').scrollTop() - 115);
+$('.doc-nav-list').scrollTop(active.offset().top + $('.doc-nav-list').scrollTop() - 115);
 Highlight();

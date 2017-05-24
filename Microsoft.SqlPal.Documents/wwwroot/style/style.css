@@ -517,31 +517,31 @@ pre {
     padding: 10px;
 }
 
-.nav {
+.doc-nav {
 }
 
-.nav-list {
+.doc-nav-list {
     font-size: 14px;
     line-height: 20px;
 }
 
 
-    .nav-list ul {
+    .doc-nav-list ul {
         display: none;
     }
 
-        .nav-list ul:first-child {
+        .doc-nav-list ul:first-child {
             margin-left: -20px;
         }
 
-    .nav-list a.active {
+    .doc-nav-list a.active {
         color: #fff !important;
         background: rgb(86,86,86);
         border-radius: 8px;
         font-weight: bold;
     }
 
-    .nav-list a, .nav-list a:visited {
+    .doc-nav-list a, .doc-nav-list a:visited {
         display: block;
         padding: 6px;
         text-decoration: none;
@@ -549,16 +549,16 @@ pre {
         transition: color 0.2s linear;
     }
 
-        .nav-list a:hover {
+        .doc-nav-list a:hover {
             color: #0078d7;
         }
 
-.nav-logo {
+.doc-nav-logo {
     height: 48px;
     padding: 20px 0 10px 0;
 }
 
-.nav-list ul {
+.doc-nav-list ul {
     margin-left: 0;
     padding-left: 20px;
     list-style: none;
@@ -639,7 +639,7 @@ article#main {
     height: 100%;
 }
 
-.nav-list a i {
+.doc-nav-list a i {
     font-size: 120%;
     float: left;
     overflow: hidden;
@@ -651,20 +651,20 @@ article#main {
     margin-left: -17px;
 }
 
-.nav-list a {
+.doc-nav-list a {
     padding-left: 23px;
 }
 
-.nav-branch {
+.doc-nav-branch {
     padding: 0 15px;
 }
 
-    .nav-branch a {
+    .doc-nav-branch a {
         font-size: 14px;
         color: #fff;
     }
 
-.nav-branch-list {
+.doc-nav-branch-list {
     position: absolute;
     left: 15px;
     top: 0;
@@ -675,7 +675,7 @@ article#main {
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-    .nav-branch-list a {
+    .doc-nav-branch-list a {
         padding: 5px;
         font-size: 12px;
         text-decoration: none;
@@ -685,21 +685,21 @@ article#main {
         transition: none;
     }
 
-        .nav-branch-list a:hover {
+        .doc-nav-branch-list a:hover {
             color: #fff;
             background: rgb(101,171,246);
             background: linear-gradient(to bottom, rgb(130,193,251) 0%, rgb(101,171,246) 100%);
         }
 
-        .nav-branch-list a:last-child {
+        .doc-nav-branch-list a:last-child {
             border-bottom: none;
         }
 
-    .nav-branch-list a {
+    .doc-nav-branch-list a {
         display: block;
     }
 
-.nav-show-button {
+.doc-nav-show-button {
     display: none;
     position: fixed;
     bottom: 10px;
@@ -718,7 +718,7 @@ article#main {
     cursor: pointer;
 }
 
-.nav-close-button {
+.doc-nav-close-button {
     display: none;
     float: right;
     font-size: 14px;
@@ -734,7 +734,7 @@ article#main {
         overflow: auto;
     }
 
-    .nav {
+    .doc-nav {
         display: none;
         width: 100%;
         position: fixed;
@@ -742,7 +742,7 @@ article#main {
         left: 0;
     }
 
-    .nav-show-button {
+    .doc-nav-show-button {
         display: block;
     }
 
@@ -753,11 +753,16 @@ article#main {
         position: initial;
     }
 
-    .nav-close-button {
+    .doc-nav-close-button {
         display: inline-block;
     }
 }
 
 .full-width {
     width: 100%;
+}
+
+.nav-item {
+    text-decoration: none!important;
+    margin-right: 20px;
 }
