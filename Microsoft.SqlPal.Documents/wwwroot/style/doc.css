@@ -13848,3 +13848,7 @@ h2 {
         font-size: 18px;
         line-height: 40px;
     }
+
+blockquote {
+    color: #000;
+}
